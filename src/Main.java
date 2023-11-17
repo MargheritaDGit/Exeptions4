@@ -5,19 +5,19 @@
 
 public class Main {
     public static void main(String[] args) {
-        try {                                                   //eseguito funzione nel try e nel catch catturato errore
-        System.out.println(dividiArray(5, 2));
-    } catch(ArithmeticException e) {
-            System.out.println(e.getMessage());
-        }
+        dividiArray(3);
     }
-    public static int dividiArray(int index, int num) { //funzione che divide array in posizione indice/num
-        int[] numeri = {2, 4, 6, 8, 10};
-        if (num == 0 || index > numeri.length - 1) {
-            throw new ArithmeticException("Errore");
-        } else {
-            return numeri[index] / num;
+
+    public static void dividiArray(int index) { //funzione che divide array in posizione indice/num
+        int[] numeri = {4, 5, 6}; //creato array
+        try {
+            int risultato = numeri[index] / 0; // index sarà un numero che andrò a prendere
+        } catch (ArithmeticException e) {
+            System.out.println("Errore aritmetico è: " + e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException a) { //indica che index non esiste all'interno dell'array
+            System.out.println("Errore index è: " + a.getMessage());
         }
     }
 }
+
 
